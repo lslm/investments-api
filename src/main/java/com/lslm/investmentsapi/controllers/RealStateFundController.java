@@ -1,7 +1,7 @@
 package com.lslm.investmentsapi.controllers;
 
 import com.lslm.investmentsapi.exceptions.NotFoundException;
-import com.lslm.investmentsapi.models.RealStateFund;
+import com.lslm.investmentsapi.models.RealStateFundInvestment;
 import com.lslm.investmentsapi.services.RealStateFundService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,21 +18,21 @@ public class RealStateFundController {
     private RealStateFundService realStateFundService;
 
     @GetMapping
-    public ResponseEntity<List<RealStateFund>> findAll() {
-        List<RealStateFund> realStateFundInvestments = realStateFundService.findAll();
-        return new ResponseEntity<>(realStateFundInvestments, HttpStatus.OK);
+    public ResponseEntity<List<RealStateFundInvestment>> findAll() {
+        List<RealStateFundInvestment> realStateFundInvestmentInvestments = realStateFundService.findAll();
+        return new ResponseEntity<>(realStateFundInvestmentInvestments, HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<RealStateFund> createRealStateFundInvestment(@RequestBody RealStateFund realStateFund) {
-        RealStateFund createdRealStateFundInvestment = realStateFundService.create(realStateFund);
-        return new ResponseEntity<>(createdRealStateFundInvestment, HttpStatus.CREATED);
+    public ResponseEntity<RealStateFundInvestment> createRealStateFundInvestment(@RequestBody RealStateFundInvestment realStateFundInvestment) {
+        RealStateFundInvestment createdRealStateFundInvestmentInvestment = realStateFundService.create(realStateFundInvestment);
+        return new ResponseEntity<>(createdRealStateFundInvestmentInvestment, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RealStateFund> findById(@PathVariable Long id) {
+    public ResponseEntity<RealStateFundInvestment> findById(@PathVariable Long id) {
         try {
-            RealStateFund realStateFundInvestment = realStateFundService.find(id);
+            RealStateFundInvestment realStateFundInvestment = realStateFundService.find(id);
             return new ResponseEntity<>(realStateFundInvestment, HttpStatus.OK);
         } catch (NotFoundException ex) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
@@ -40,10 +40,10 @@ public class RealStateFundController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<RealStateFund> update(@PathVariable Long id, @RequestBody RealStateFund realStateFund) {
+    public ResponseEntity<RealStateFundInvestment> update(@PathVariable Long id, @RequestBody RealStateFundInvestment realStateFundInvestment) {
         try {
-            RealStateFund updatedRealStateFundInvestment = realStateFundService.update(id, realStateFund);
-            return new ResponseEntity<>(updatedRealStateFundInvestment, HttpStatus.CREATED);
+            RealStateFundInvestment updatedRealStateFundInvestmentInvestment = realStateFundService.update(id, realStateFundInvestment);
+            return new ResponseEntity<>(updatedRealStateFundInvestmentInvestment, HttpStatus.CREATED);
         } catch (NotFoundException ex) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }

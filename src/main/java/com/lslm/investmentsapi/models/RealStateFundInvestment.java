@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "real_state_fund_investments")
-public class RealStateFund extends Asset {
+public class RealStateFundInvestment extends Asset {
     private String ticker;
     private int quote;
     private BigDecimal pricePerQuote;

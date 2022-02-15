@@ -1,7 +1,7 @@
 package com.lslm.investmentsapi.services;
 
 import com.lslm.investmentsapi.exceptions.NotFoundException;
-import com.lslm.investmentsapi.models.RealStateFund;
+import com.lslm.investmentsapi.models.RealStateFundInvestment;
 import com.lslm.investmentsapi.repositories.RealStateFundRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,12 +14,12 @@ public class RealStateFundService {
     @Autowired
     private RealStateFundRepository realStateFundRepository;
 
-    public List<RealStateFund> findAll() {
+    public List<RealStateFundInvestment> findAll() {
         return realStateFundRepository.findAll();
     }
 
-    public RealStateFund find(Long id) throws NotFoundException {
-        Optional<RealStateFund> realStateFund = realStateFundRepository.findById(id);
+    public RealStateFundInvestment find(Long id) throws NotFoundException {
+        Optional<RealStateFundInvestment> realStateFund = realStateFundRepository.findById(id);
 
         if(realStateFund.isPresent())
             return realStateFund.get();
@@ -27,17 +27,17 @@ public class RealStateFundService {
             throw new NotFoundException();
     }
 
-    public RealStateFund create(RealStateFund newRealStateFund) {
-        return realStateFundRepository.save(newRealStateFund);
+    public RealStateFundInvestment create(RealStateFundInvestment newRealStateFundInvestment) {
+        return realStateFundRepository.save(newRealStateFundInvestment);
     }
 
-    public RealStateFund update(Long id, RealStateFund updatedRealStateFund) throws NotFoundException {
-        RealStateFund realStateFund = find(id);
-        return realStateFundRepository.save(realStateFund);
+    public RealStateFundInvestment update(Long id, RealStateFundInvestment updatedRealStateFundInvestment) throws NotFoundException {
+        RealStateFundInvestment realStateFundInvestment = find(id);
+        return realStateFundRepository.save(realStateFundInvestment);
     }
 
     public void delete(Long id) throws NotFoundException {
-        RealStateFund realStateFund = find(id);
-        realStateFundRepository.delete(realStateFund);
+        RealStateFundInvestment realStateFundInvestment = find(id);
+        realStateFundRepository.delete(realStateFundInvestment);
     }
 }
