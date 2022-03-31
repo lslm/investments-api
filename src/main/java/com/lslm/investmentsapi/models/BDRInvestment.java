@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "real_state_fund_investments")
+@Table(name = "bdr_investments")
 public class BDRInvestment extends Asset {
     private String ticker;
     private int quote;

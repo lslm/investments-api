@@ -16,7 +16,7 @@ public class BDRsController {
     private BDRService bdrService;
 
     @PostMapping
-    public ResponseEntity<BDRInvestment> createRealStateFundInvestment(@RequestBody BDRInvestment bdrInvestment) {
+    public ResponseEntity<BDRInvestment> createBDRInvestment(@RequestBody BDRInvestment bdrInvestment) {
         BDRInvestment createdBDRInvestment = bdrService.create(bdrInvestment);
         return new ResponseEntity<>(createdBDRInvestment, HttpStatus.CREATED);
     }
